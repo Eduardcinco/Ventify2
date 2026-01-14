@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://CAMBIA-POR-TU-BACKEND-RAILWAY.railway.app/api'
+  apiUrl: 'https://ventify2-production.up.railway.app/api'
 };
