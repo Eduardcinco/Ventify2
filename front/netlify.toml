@@ -1,6 +1,6 @@
 [build]
   command = "npm run build"
-  publish = "dist/browser"
+  publish = "dist/ventify2-front/browser"
 
 [[redirects]]
   from = "/*"
@@ -9,12 +9,12 @@
 
 [context.production]
   command = "npm run build"
-  publish = "dist/browser"
+  publish = "dist/ventify2-front/browser"
 
 [context.deploy-preview]
   command = "npm run build"
-  publish = "dist/browser"
+  publish = "dist/ventify2-front/browser"
 
 [context.branch-deploy]
   command = "npm run build"
-  publish = "dist/browser"
+  publish = "dist/ventify2-front/browser"
