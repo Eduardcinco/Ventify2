@@ -69,13 +69,12 @@ namespace VentifyAPI
                         .WithOrigins(
                             "http://localhost:4200",
                             "https://localhost:4200",
-                            "https://ventify.netlify.app",
-                            "https://ventify2.netlify.app",
                             "https://ventifive.netlify.app",
                             "https://ventifyapp.netlify.app")
-                        .AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .AllowCredentials();
+                        .WithMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH", "HEAD")
+                        .WithHeaders("Content-Type", "Authorization", "Accept", "X-Requested-With")
+                        .AllowCredentials()
+                        .SetIsOriginAllowedToAllowWildcardSubdomains();
                 });
             });
 
