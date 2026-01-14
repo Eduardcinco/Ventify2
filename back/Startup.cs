@@ -97,8 +97,8 @@ namespace VentifyAPI
                 app.UseSwaggerUI();
             }
 
-            app.UseRouting();
             app.UseCors("default");
+            app.UseRouting();
             app.UseAuthentication();
             app.UseMiddleware<TenantMiddleware>();
             app.UseAuthorization();
