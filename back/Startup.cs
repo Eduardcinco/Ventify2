@@ -70,7 +70,9 @@ namespace VentifyAPI
                             "http://localhost:4200",
                             "https://localhost:4200",
                             "https://ventify.netlify.app",
-                            "https://ventify2.netlify.app")
+                            "https://ventify2.netlify.app",
+                            "https://ventifive.netlify.app",
+                            "https://ventifyapp.netlify.app")
                         .AllowAnyHeader()
                         .AllowAnyMethod()
                         .AllowCredentials();
