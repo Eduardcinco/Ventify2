@@ -34,7 +34,8 @@ namespace VentifyAPI
                 Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection");
 
             services.AddDbContext<AppDbContext>(opts =>
-                opts.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 21))));
+                opts.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 21)))
+                    .EnableRetryOnFailure(maxRetryCount: 3, maxRetryDelaySeconds: 5, errorNumbersToAdd: null));
 
             var jwtKey =
                 Environment.GetEnvironmentVariable("JWT_SECRET") ??
