@@ -14,6 +14,7 @@
           "options": {
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
+            "ssr": false,
             "assets": [
               { "glob": "**/*", "input": "public" },
               { "glob": "_redirects", "input": "src", "output": "/" }
