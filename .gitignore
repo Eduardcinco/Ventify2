@@ -1,0 +1,17 @@
+node_modules/
+bin/
+obj/
+dist/
+out/
+*.db
+*.sqlite
+.env
+.env.local
+.env.*.local
+appsettings.Production.json
+*.log
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json

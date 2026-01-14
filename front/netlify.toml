@@ -1,0 +1,20 @@
+[build]
+  command = "npm run build"
+  publish = "dist/browser"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[context.production]
+  command = "npm run build"
+  publish = "dist/browser"
+
+[context.deploy-preview]
+  command = "npm run build"
+  publish = "dist/browser"
+
+[context.branch-deploy]
+  command = "npm run build"
+  publish = "dist/browser"

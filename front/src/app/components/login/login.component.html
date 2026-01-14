@@ -1,0 +1,14 @@
+<div class="card">
+  <h2>Inicio de sesión</h2>
+  <form (ngSubmit)="submit()" novalidate>
+    <label>Correo</label>
+    <input type="email" [(ngModel)]="email" name="email" required />
+
+    <label>Contraseña</label>
+    <input type="password" [(ngModel)]="password" name="password" required />
+
+    <button type="submit" [disabled]="loading">{{ loading ? 'Entrando...' : 'Entrar' }}</button>
+    <div class="error" *ngIf="error">{{ error }}</div>
+  </form>
+  <p class="switch">¿Sin cuenta? <a routerLink="/register">Crear cuenta</a></p>
+</div>

@@ -1,0 +1,20 @@
+<div class="card">
+  <h2>Registro de comerciante</h2>
+  <form (ngSubmit)="submit()" novalidate>
+    <label>Nombre</label>
+    <input type="text" [(ngModel)]="name" name="name" required />
+
+    <label>Correo</label>
+    <input type="email" [(ngModel)]="email" name="email" required />
+
+    <label>Contraseña</label>
+    <input type="password" [(ngModel)]="password" name="password" required />
+
+    <label>Nombre del negocio (opcional)</label>
+    <input type="text" [(ngModel)]="businessName" name="businessName" />
+
+    <button type="submit" [disabled]="loading">{{ loading ? 'Creando...' : 'Crear cuenta' }}</button>
+    <div class="error" *ngIf="error">{{ error }}</div>
+  </form>
+  <p class="switch">¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a></p>
+</div>

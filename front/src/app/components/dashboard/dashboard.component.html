@@ -1,0 +1,65 @@
+<section class="hero">
+  <div>
+    <p class="eyebrow">Dashboard</p>
+    <h2>Hola, {{ userName }}</h2>
+    <p class="muted">Gestiona productos y registra ventas.</p>
+  </div>
+  <button class="ghost" (click)="logout()">Salir</button>
+</section>
+
+<div class="grid">
+  <div class="card">
+    <h3>Agregar producto</h3>
+    <div class="form-grid">
+      <label>Nombre <input [(ngModel)]="productForm.nombre" /></label>
+      <label>Descripción <input [(ngModel)]="productForm.descripcion" /></label>
+      <label>Precio venta <input type="number" [(ngModel)]="productForm.precio" /></label>
+      <label>Costo <input type="number" [(ngModel)]="productForm.costo" /></label>
+      <label>Cantidad inicial <input type="number" [(ngModel)]="productForm.cantidad" /></label>
+      <label>Stock mínimo <input type="number" [(ngModel)]="productForm.stockMinimo" /></label>
+    </div>
+    <button (click)="createProduct()">Guardar</button>
+  </div>
+
+  <div class="card">
+    <h3>Productos</h3>
+    <div *ngIf="loadingProducts">Cargando...</div>
+    <table *ngIf="!loadingProducts && products.length">
+      <thead>
+        <tr><th>Nombre</th><th>Precio</th><th>Stock</th></tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of products">
+          <td>{{ p.nombre }}</td>
+          <td>${{ p.precioVenta | number:'1.2-2' }}</td>
+          <td [class.low]="p.stockActual <= p.stockMinimo">{{ p.stockActual }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p *ngIf="!loadingProducts && !products.length" class="muted">Aún no tienes productos.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Registrar venta</h3>
+  <div class="form-grid two">
+    <label>Producto
+      <select [(ngModel)]="sale.productId" (change)="updateSaleTotal()">
+        <option [ngValue]="0">Selecciona...</option>
+        <option *ngFor="let p of products" [ngValue]="p.id">{{ p.nombre }} - ${{ p.precioVenta | number:'1.2-2' }}</option>
+      </select>
+    </label>
+    <label>Cantidad <input type="number" [(ngModel)]="sale.cantidad" (input)="updateSaleTotal()" /></label>
+    <label>Método de pago
+      <select [(ngModel)]="sale.paymentMethod">
+        <option value="efectivo">Efectivo</option>
+        <option value="tarjeta">Tarjeta</option>
+        <option value="transferencia">Transferencia</option>
+      </select>
+    </label>
+    <div class="total">Total: ${{ saleTotal | number:'1.2-2' }}</div>
+  </div>
+  <button (click)="registerSale()">Registrar venta</button>
+  <p class="success" *ngIf="saleMessage">{{ saleMessage }}</p>
+  <p class="error" *ngIf="saleError">{{ saleError }}</p>
+</div>

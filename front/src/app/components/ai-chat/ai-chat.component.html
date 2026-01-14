@@ -1,0 +1,17 @@
+<div class="chat-button" (click)="toggle()">💬</div>
+<div class="chat-panel" *ngIf="open">
+  <header>
+    <div>Asistente Ventify</div>
+    <button (click)="toggle()">×</button>
+  </header>
+  <div class="messages">
+    <div *ngFor="let m of messages" [class.me]="m.role === 'user'">
+      <span>{{ m.content }}</span>
+    </div>
+    <div *ngIf="sending" class="typing">Pensando...</div>
+  </div>
+  <footer>
+    <input [(ngModel)]="input" (keyup.enter)="send()" placeholder="Escribe tu pregunta" />
+    <button (click)="send()" [disabled]="sending">Enviar</button>
+  </footer>
+</div>
