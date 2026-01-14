@@ -1,16 +1,1 @@
-<div class="app-shell">
-  <header class="topbar">
-    <div class="brand">Ventify MVP</div>
-    <nav>
-      <a routerLink="/login">Login</a>
-      <a routerLink="/register">Registro</a>
-      <a *ngIf="isAuth()" routerLink="/dashboard">Dashboard</a>
-    </nav>
-  </header>
-
-  <main>
-    <router-outlet></router-outlet>
-  </main>
-
-  <ai-chat *ngIf="isAuth()"></ai-chat>
-</div>
+<router-outlet></router-outlet>
